@@ -1,0 +1,18 @@
+button, input{
+    padding: 10px;
+    border: 2px solid rgb(235, 115, 115);
+    border-radius: 5px;
+    font-weight: 400;
+    margin: 10px;
+    transition: .5s ease;
+}
+
+input:focus{
+    outline: none;
+}
+
+button:hover{
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+}
