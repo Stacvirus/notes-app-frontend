@@ -1,15 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
-import Note from "./Note";
-import "./button.css"
-import ServerData from "./Server"
-import Login from "./loginForm";
-import Togglable from "./Togglable";
+import React, { useEffect, useState, useRef } from 'react';
+import Note from './Note';
+import './button.css'
+import ServerData from './Server'
+import Login from './loginForm';
+import Togglable from './Togglable';
 
 function FormApp(props) {
     const [notes, setNotes] = useState([]);
-    const [newNote, setNewNote] = useState("");
+    const [newNote, setNewNote] = useState('');
     const [imp, setImp] = useState(false);
     const [user, setUser] = useState(undefined);
+    const [errorMsg, setErrorMsg] = useState('');
 
     const noteFormRef = useRef();
 
@@ -38,7 +39,7 @@ function FormApp(props) {
         e.preventDefault();
         const isExist = notes.filter(note => note.content == newNote ? true : false);
         isExist[0] ? updateNote(isExist[0]) : addNote();
-        // setNewNote("")
+        // setNewNote('')
     }
 
     function updateNote(changedNote) {
@@ -73,7 +74,7 @@ function FormApp(props) {
     const handleDel = async (id) => {
         try {
             await ServerData.deleteNote(id);
-            console.log("deletion complete");
+            console.log('deletion complete');
             fetchNotes();
         } catch (error) {
             console.log(error.message);
@@ -107,18 +108,18 @@ function FormApp(props) {
     function showNoteForm() {
         return (
             <form onSubmit={processNotes}>
-                <input type="text" value={newNote} onChange={handleNoteChange} />
-                <button type="submit">Save</button>
+                <input type='text' value={newNote} onChange={handleNoteChange} />
+                <button type='submit'>Save</button>
             </form>
         )
     }
 
     return (
         <div>
-            <Togglable btnLabel="login">
+            <Togglable btnLabel='login'>
                 {!user && showLoginform()}
             </Togglable>
-            <Togglable btnLabel="new blog" ref={noteFormRef}>
+            <Togglable btnLabel='new blog' ref={noteFormRef}>
                 {user && <div><p>{user.username} logged in</p> {showNoteForm()} </div>}
             </Togglable>
             <h1>Notes</h1>

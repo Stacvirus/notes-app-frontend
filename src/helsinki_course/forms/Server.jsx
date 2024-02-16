@@ -1,6 +1,6 @@
-import axios from "axios";
-const baseurl = "http://localhost:3001/blog/notes/"
-const loginUrl = "http://localhost:3001/blog/login/"
+import axios from 'axios';
+const baseurl = 'http://localhost:3001/blog/notes/'
+const loginUrl = 'http://localhost:3001/blog/login/'
 
 //user request functions
 let token = null;

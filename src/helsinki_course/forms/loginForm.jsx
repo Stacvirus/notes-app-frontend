@@ -1,6 +1,5 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Login({ login }) {
     const [userInfos, setUserInfos] = useState({ username: '', password: '' });
