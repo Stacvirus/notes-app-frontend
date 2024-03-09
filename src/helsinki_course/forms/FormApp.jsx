@@ -4,10 +4,10 @@ import './button.css'
 import ServerData from './Server'
 import Login from './loginForm';
 import Togglable from './Togglable';
+import NoteForm from './NoteForm';
 
-function FormApp(props) {
+function FormApp() {
     const [notes, setNotes] = useState([]);
-    const [newNote, setNewNote] = useState('');
     const [imp, setImp] = useState(false);
     const [user, setUser] = useState(undefined);
     const [errorMsg, setErrorMsg] = useState('');
@@ -35,10 +35,9 @@ function FormApp(props) {
         }
     }, []);
 
-    function processNotes(e) {
-        e.preventDefault();
+    function processNotes(newNote) {
         const isExist = notes.filter(note => note.content == newNote ? true : false);
-        isExist[0] ? updateNote(isExist[0]) : addNote();
+        isExist[0] ? updateNote(isExist[0]) : addNote(newNote);
         // setNewNote('')
     }
 
@@ -50,9 +49,9 @@ function FormApp(props) {
             });
     }
 
-    function addNote() {
+    function addNote(content) {
         const newObject = {
-            content: newNote,
+            content: content,
             important: Math.random != 1
         }
         ServerData.createNode(newObject)
@@ -63,9 +62,7 @@ function FormApp(props) {
         noteFormRef.current.handleVisibility();
     }
 
-    function handleNoteChange(e) {
-        setNewNote(e.target.value);
-    }
+
 
     function handleImpotance() {
         setImp(!imp);
@@ -107,24 +104,35 @@ function FormApp(props) {
 
     function showNoteForm() {
         return (
-            <form onSubmit={processNotes}>
-                <input type='text' value={newNote} onChange={handleNoteChange} />
-                <button type='submit'>Save</button>
-            </form>
+            // <div className="formDiv">
+            //     <h2>Create a new note</h2>
+            //     <form onSubmit={processNotes}>
+            //         <input type='text' value={newNote} onChange={handleNoteChange} />
+            //         <button type='submit'>Save</button>
+            //     </form>
+            // </div>
+            <NoteForm giveNote={processNotes} />
         )
     }
 
     return (
         <div>
+            {user && <p>{user.username} logged in</p>}
             <Togglable btnLabel='login'>
                 {!user && showLoginform()}
             </Togglable>
-            <Togglable btnLabel='new blog' ref={noteFormRef}>
-                {user && <div><p>{user.username} logged in</p> {showNoteForm()} </div>}
+            <Togglable btnLabel='new note' ref={noteFormRef}>
+                {user && <div> {showNoteForm()} </div>}
             </Togglable>
             <h1>Notes</h1>
             <ul>
-                {notes.map((note, id) => <Note note={note} key={id} state={imp} delSignal={handleDel} />)}
+                {notes.map((note, id) => {
+                    if (imp) {
+                        if (note.important) return <Note note={note} key={id} delSignal={handleDel} updateNote={updateNote} />
+                    } else if (!imp) {
+                        return <Note note={note} key={id} delSignal={handleDel} updateNote={updateNote} />
+                    }
+                })}
             </ul>
 
             <button onClick={handleImpotance}>important</button>

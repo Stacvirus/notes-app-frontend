@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1709829458944" clover="3.2.0">
+  <project timestamp="1709829458944" name="All files">
+    <metrics statements="20" coveredstatements="18" conditionals="6" coveredconditionals="5" methods="9" coveredmethods="7" elements="35" coveredelements="30" complexity="0" loc="20" ncloc="20" packages="1" files="3" classes="3"/>
+    <file name="Note.jsx" path="/home/satcha/Downloads/PKF48Docs/doc1/webDev/React/notes-app-frontend/src/helsinki_course/forms/Note.jsx">
+      <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <line num="5" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+    </file>
+    <file name="NoteForm.jsx" path="/home/satcha/Downloads/PKF48Docs/doc1/webDev/React/notes-app-frontend/src/helsinki_course/forms/NoteForm.jsx">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="5" count="19" type="stmt"/>
+      <line num="8" count="18" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="16" count="19" type="stmt"/>
+    </file>
+    <file name="Togglable.jsx" path="/home/satcha/Downloads/PKF48Docs/doc1/webDev/React/notes-app-frontend/src/helsinki_course/forms/Togglable.jsx">
+      <metrics statements="10" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="7" count="7" type="stmt"/>
+      <line num="9" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="10" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="3" type="stmt"/>
+      <line num="16" count="7" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="20" count="7" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
